@@ -1,7 +1,5 @@
-import pyinputplus as pyip
-
-upc_input = pyip.inputNum("Enter UPC: ")
-upc_number = [int(num) for num in str(upc_input)]   # Convert int input to list
+upc_input = input("Enter UPC: ")
+upc_number = [int(num) for num in upc_input]   # Convert int input to list
 
 upc_odd = upc_number[:11:2]   # digits in odd position
 upc_even = upc_number[1:10:2] # digits in even position
