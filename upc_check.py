@@ -1,8 +1,17 @@
-upc_input = input("Enter UPC: ")
-upc_number = [int(num) for num in upc_input]   # Convert int input to list
+while True:
+    upc_input = input("Enter UPC: ")
 
-upc_odd = upc_number[:11:2]   # digits in odd position
-upc_even = upc_number[1:10:2] # digits in even position
+    # End loop if 11 or 12 digit number
+    if upc_input.isnumeric() and 10 < len(upc_input) < 13:
+        break
+    else:
+        print("Please enter an 11 or 12 digit number.")
+
+# Convert int input to list
+upc_number = [int(num) for num in upc_input]
+
+upc_odd = upc_number[::2]   # digits in odd position
+upc_even = upc_number[1::2] # digits in even position
 sum_odd = 0
 sum_even = 0
 
@@ -17,9 +26,6 @@ for digit in upc_even:
 
 sum = sum_odd + sum_even
 
-check_digit = upc_number[11] + sum
+check_digit = 10 - sum % 10
 
-if check_digit % 10 == 0:
-    print("Valid UPC")
-else:
-    print("Invalid UPC")
+print(f"Check digit is {check_digit}")
